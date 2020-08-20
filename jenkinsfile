@@ -10,13 +10,13 @@ pipeline {
         stage('Docker-Build') {
             steps {
                 sh 'whoami'
-                sh 'docker build -t vicky12345/docker:nginx .'
-                sh 'docker push vicky12345/docker:nginx'
+                sh 'sudo docker build -t vicky12345/docker:nginx .'
+                sh 'sudo docker push vicky12345/docker:nginx'
             }
         }
         stage('Cleanup') {
             steps {
-                sh 'docker system prune --all -f'
+                sh 'sudo docker system prune --all -f'
             }
         }
         stage('Remote SSH') {
