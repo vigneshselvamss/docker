@@ -11,8 +11,8 @@ pipeline {
     stages {
         stage('Docker-Build') {
             steps {
-                sh 'sudo docker build -t prasannabaskar/testing:coda .'
-                sh 'sudo docker push prasannabaskar/testing:coda'
+                sh 'sudo docker build -t vicky12345/docker:nginx .'
+                sh 'sudo docker push vicky12345/docker:nginx'
             }
         }
         stage('Cleanup') {
