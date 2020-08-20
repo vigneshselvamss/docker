@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Docker-Build') {
             steps {
+                sh 'whoami'
                 sh 'docker build -t vicky12345/docker:nginx .'
                 sh 'docker push vicky12345/docker:nginx'
             }
