@@ -1,0 +1,28 @@
+def remote = [:]
+remote.name = 'docker'
+remote.host = '34.213.160.111'
+remote.user = 'newuser'
+remote.password = 'password'
+remote.allowAnyHosts = true
+
+pipeline {
+
+    agent any
+    stages {
+        stage('Docker-Build') {
+            steps {
+                sh 'sudo docker build -t prasannabaskar/testing:coda .'
+                sh 'sudo docker push prasannabaskar/testing:coda'
+            }
+        }
+        stage('Cleanup') {
+            steps {
+                sh 'sudo docker system prune --all -f'
+            }
+        }
+        stage('Remote SSH') {
+           sshCommand remote: remote, command: "ls -lrt"
+    }
+   }
+  }
+
